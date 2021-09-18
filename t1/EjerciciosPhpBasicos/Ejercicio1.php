@@ -15,4 +15,5 @@ echo "\n";
 echo "Maximo: $max\n";
 echo "Minimo: $min\n";
 
+
 ?>
