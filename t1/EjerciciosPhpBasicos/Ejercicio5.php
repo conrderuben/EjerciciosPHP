@@ -1,4 +1,5 @@
 <?php
+/*
 $f="";
 $p="rey";
 echo "Dime un numero n: ";
@@ -20,5 +21,16 @@ for($i=1; $i<=$n; $i++){
     $f="$f $p"; 
 }
 echo $f;
+*/ 
+
+
+echo "Introduce n: ";
+fscanf ( STDIN, "%d\n", $n );
+
+$carta = ['as','dos','tres','cuatro','cinco','seis','siete','sota','caballo','rey'];
+
+for($i = 0; $i < $n; $i ++) {
+    echo $carta[$i%10], ' ';
+}
 
 ?>

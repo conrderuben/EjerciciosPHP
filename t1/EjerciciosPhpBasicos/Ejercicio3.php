@@ -17,4 +17,10 @@ if ($p <= 0 && $p >= 11) {
     }
 }
 
+//Tabien se puede asi el for
+/*
+ * for ($i; $i<$n*$p; $i++){
+ *    echo $i%$p.' ';
+ */
+
 ?>
