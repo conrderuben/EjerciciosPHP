@@ -85,6 +85,61 @@ $edad=17;
  
  //Si a una variable le asignas otra pero con un & delante, le asigna su referencia, su posicion en memoria
  
+ // funciones
+ function doble($x)
+ {
+     $x = 2 * $x;
+     return $x;
+ }
+ echo doble(6);
+ 
+ // El echo se podriar hacer antes incluso de escribir el
+ // function pero solo en este script en ningun otro
+ 
+ $numero = 10;
+ 
+ echo "\n";
+ echo $numero;
+ 
+ echo "\n";
+ echo doble($numero);
+ 
+ echo "\n";
+ echo $numero;
+ 
+ // Aqui $x vale mantiene su valor
+ 
+ // Pero si le pones & a function doble (&$x)
+ // $x se ve afectado
+ 
+ 
+ //global $x hace que puedas consultar el valor de una variable
+ //Que se encuentre fuera de la funcion
+ 
+ //si en la funcion te pide un valor, por ejemplo en doble no le pasas nada
+ //por ejemplo doble();
+ //Puedes asignarle un valor por defecto
+ 
+ echo "\n";
+ function triple($x = 5){
+     $x = 3 * $x;
+     return $x;
+ }
+ 
+ echo triple(6);
+ echo "\n";
+ echo triple();
+ 
+ //////////////////////////////////
+ function sum(...$numeros) {
+     $acc = 0;
+     foreach ($numeros as $n) {
+         $acc += $n;
+     }
+     return $acc;
+ }
+ 
+ echo sum(1, 2, 3, 4);
  
 
  
