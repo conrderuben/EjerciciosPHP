@@ -19,8 +19,20 @@ foreach ($array as $k => $v) {
 }
 
 echo "\n";
+echo "ordenado por nombre:";
+echo "\n";
+ksort($array);
+foreach ($array as $k => $v) {
+    echo "$k ($v)\n";
+}
 
-echo ksort($array);
-echo asort($array);
+echo "\n";
+echo "ordenado por edad:";
+echo "\n";
+
+arsort($array);
+foreach ($array as $k => $v) {
+    echo "$k ($v)\n";
+}
 
 ?> 
