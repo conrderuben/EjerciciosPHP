@@ -22,8 +22,21 @@ fscanf(STDIN, "%d\n", $año);
 
 $tiempo=time()-strtotime("$dia-$mes-$año");
 
-$añosT=$tiempo/sPa;
-$tiempo=$tiempo/sPa;
+$añosT=(int)($tiempo/sPa);
+$tiempo=$tiempo%sPa;
+$mesesT=(int)($tiempo/sPmes);
+$tiempo=$tiempo%sPmes;
+$diasT=(int)($tiempo/sPd);
+$tiempo=$tiempo%sPd;
+$horasT=(int)($tiempo/sPh);
+$tiempo=$tiempo%sPh;
+$minutosT=(int)($tiempo/sPm);
+$tiempo=$tiempo%sPm;
+
+echo "Han transcurrido desde el $dia/$mes/$año.
+$añosT años, $mesesT meses, $diasT días, $horasT horas, $minutosT minutos y $tiempo segundos";
+
+
 
 
 

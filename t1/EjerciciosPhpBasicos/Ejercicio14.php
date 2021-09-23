@@ -4,7 +4,7 @@
 function menu()
 {
     $opcionEscogida = - 1;
-    $opcionMaxima = 5;
+    $opcionMaxima = 9;
 
     while ($opcionEscogida < 0 || $opcionEscogida > $opcionMaxima) {
 
@@ -16,13 +16,17 @@ function menu()
         
         DEPARTAMENTOS:
         1. CREAR DEPARTAMENTO
-        2. MOSTRAR DEPARTAMENTOS
+        2. BORRAR DEPARTAMENTO
+        3. MODIFICAR DEPARTAMENTO
+        4. MOSTRAR DEPARTAMENTOS
         
         
         EMPLEADOS:
-        3. CREAR EMPLEADO
-        4. MOSTRAR EMPLEADO
-        5. FILTRAR EMPLEADO POR ID
+        5. CREAR EMPLEADO
+        6. BORRAR EMPLEADO
+        7. MODIFICAR EMPLEADO
+        8. MOSTRAR EMPLEADO
+        9. FILTRAR EMPLEADO POR ID
         
         0. SALIR
         
@@ -51,15 +55,27 @@ function ejecutarMenu(&$bd)
                 crearDep($bd);
                 break;
             case 2:
-                mostrarDep($bd);
+                borrarDep($bd);
                 break;
             case 3:
-                crearEmp($bd);
+                modificarDep($bd);
                 break;
             case 4:
-                mostrarEmp($bd);
+                mostrarDep($bd);
                 break;
             case 5:
+                crearEmp($bd);
+                break;
+            case 6:
+                borrarEmp($bd);
+                break;
+            case 7:
+                modificarEmp($bd);
+                break;
+            case 8:
+                mostrarEmp($bd);
+                break;
+            case 9:
                 mostrarEmpId($bd);
                 break;
         }
@@ -73,7 +89,7 @@ function crearDep(&$bd)
     echo "CREAR DEPARTAMENTO";
     echo "\n";
     echo "Dime el id del departamento: ";
-    $id = readline();
+    fscanf(STDIN, "%d\n", $id);
     echo "Dime el nombre del departamento: ";
     $nombre = readline();
     echo "Dime la descripcion del departamento: ";
@@ -82,6 +98,64 @@ function crearDep(&$bd)
         'nombre' => $nombre,
         'desc' => $desc
     ];
+    siguiente();
+}
+
+// -----------------------------BORRAR DEPARTAMENTO------------------------------
+function borrarDep(&$bd)
+{
+    echo "\n";
+    echo "BORRAR DEPARTAMENTO";
+    echo "\n";
+    echo "DAME EL ID DE DEPARTAMENTO";
+    fscanf(STDIN, "%d\n", $id);
+    if (isset($bd['departamento'])) {
+        if (array_key_exists($id, $bd['departamento'])) {
+
+            unset($bd['departamento'][$id]);
+            echo "BORRADO REALIZADO";
+        } else {
+            echo "EL ID NO EXISTE";
+        }
+    } else {
+        echo PHP_EOL;
+        echo "NO HAY DEPARTAMENTOS REGISTRADOS";
+        echo PHP_EOL;
+    }
+    siguiente();
+}
+
+// -----------------------------MODIFICAR DEPARTAMENTO---------------------------
+function modificarDep(&$bd)
+{
+    echo "\n";
+    echo "MODIFICAR DEPARTAMENTO";
+    echo "\n";
+    echo "DAME EL ID DE DEPARTAMENTO";
+    fscanf(STDIN, "%d\n", $id);
+    if (isset($bd['departamento'])) {
+        if (array_key_exists($id, $bd['departamento'])) {
+            echo "\n";
+            echo "nombre: ";
+            fscanf(STDIN, "%s\n", $nombre);
+            echo "\n";
+            echo "desc: ";
+            $desc = readline();
+            unset($bd['departamento'][$id]);
+            $bd['departamento'][$id] = [
+                'nombre' => $nombre,
+                'desc' => $desc
+            ];
+
+            echo "MODIFICACIÓN REALIZADA";
+        } else {
+            echo "EL ID NO EXISTE";
+        }
+    } else {
+        echo PHP_EOL;
+        echo "NO HAY DEPARTAMENTOS REGISTRADOS";
+        echo PHP_EOL;
+    }
     siguiente();
 }
 
@@ -117,22 +191,23 @@ function crearEmp(&$bd)
         $idDep = readline();
 
         if (isset($bd['departamento']) && array_key_exists($idDep, $bd['departamento'])) {
-
             $bien = true;
-        }
-        echo "Error en el id del departamento";
-        echo "\n";
-        echo "\n";
-        echo "Que desea?: crear departamento / cambiar departamento\n";
-        echo "Tu elección: ";
-        $respuesta = readline();
-        if ($respuesta == "crear departamento") {
-            $bien = true;
-            crearDep($bd);
-        } else if ($respuesta == "cambiar departamento") {
-            $bien = false;
         } else {
-            $bien = true;
+
+            echo "Error en el id del departamento";
+            echo "\n";
+            echo "\n";
+            echo "Que desea?: crear departamento / cambiar departamento\n";
+            echo "Tu elección: ";
+            $respuesta = readline();
+            if ($respuesta == "crear departamento") {
+                $bien = true;
+                crearDep($bd);
+            } else if ($respuesta == "cambiar departamento") {
+                $bien = false;
+            } else {
+                $bien = true;
+            }
         }
     }
 
@@ -144,14 +219,100 @@ function crearEmp(&$bd)
     siguiente();
 }
 
-// ---------------------------MOSTRAR EMPLEDOS---------------------------
+// ---------------------------BORRAR EMPLEADOS---------------------------
+function borrarEmp(&$bd)
+{
+    echo "\n";
+    echo "BORRAR EMPLEADO";
+    echo "\n";
+    echo "DAME EL ID DE EMPLEADO";
+    fscanf(STDIN, "%d\n", $id);
+    if (isset($bd['empleado'])) {
+        if (array_key_exists($id, $bd['empleado'])) {
+
+            unset($bd['empleado'][$id]);
+            echo "BORRADO REALIZADO";
+        } else {
+            echo "EL ID NO EXISTE";
+        }
+    } else {
+        echo PHP_EOL;
+        echo "NO HAY EMPLEADOS REGISTRADOS";
+        echo PHP_EOL;
+    }
+    siguiente();
+}
+
+// ---------------------------MODIFICAR EMPLEADOS--------------------------
+function modificarEmp(&$bd)
+{
+    echo "\n";
+    echo "MODIFICAR EMPLEADO";
+    echo "\n";
+    echo "DAME EL ID DE EMPLEADO";
+    fscanf(STDIN, "%d\n", $id);
+    if (isset($bd['empleado'])) {
+        if (array_key_exists($id, $bd['empleado'])) {
+            echo "\n";
+            echo "nombre: ";
+            fscanf(STDIN, "%s\n", $nombre);
+            echo "\n";
+            echo "apellido: ";
+            $apellido = readline();
+            echo "\n";
+            echo "idDpto: ";
+            $idDpto = readline();
+            if (isset($bd['departamento']) && array_key_exists($idDpto, $bd['departamento'])) {
+                $bien = true;
+            } else {
+
+                echo "Error en el id del departamento";
+                echo "\n";
+                echo "\n";
+                echo "Que desea?: crear departamento / cambiar departamento\n";
+                echo "Tu elección: ";
+                $respuesta = readline();
+                if ($respuesta == "crear departamento") {
+                    $bien = true;
+                    crearDep($bd);
+                } else if ($respuesta == "cambiar departamento") {
+                    crearEmp($bd);
+                }
+            }
+            unset($bd['empleado'][$id]);
+            $bd['empleado'][$id] = [
+                'nombre' => $nombre,
+                'apellido' => $apellido,
+                'idDpto' => $idDpto
+            ];
+            echo PHP_EOL;
+            echo "MODIFICACIÓN REALIZADA";
+        } else {
+            echo "EL ID NO EXISTE";
+        }
+    } else {
+        echo PHP_EOL;
+        echo "NO HAY DEPARTAMENTOS REGISTRADOS";
+        echo PHP_EOL;
+    }
+    siguiente();
+}
+
+// ---------------------------MOSTRAR EMPLEADOS---------------------------
 function mostrarEmp($bd)
 {
     echo "\n";
     echo "MOSTRAR EMPLEADOS";
     echo "\n";
-    foreach ($bd['empleado'] as $id => $empleado) {
-        echo "->id:$id nombre:{$empleado['nombre']} apellido:{$empleado['apellido']} departamento: ({$bd['departamento'][$empleado['idDpto']]['nombre']})";
+    if (isset($bd['empleado'])) {
+
+        foreach ($bd['empleado'] as $id => $empleado) {
+            echo "->id:$id nombre:{$empleado['nombre']} apellido:{$empleado['apellido']} departamento: ({$bd['departamento'][$empleado['idDpto']]['nombre']})";
+        }
+    } else {
+        echo PHP_EOL;
+        echo "NO HAY EMPLEADOS REGISTRADOS";
+        echo PHP_EOL;
     }
     siguiente();
     ;
@@ -165,11 +326,17 @@ function mostrarEmpId($bd)
     echo "\n";
     echo "DAME EL ID DE EMPLEADO ";
     fscanf(STDIN, "%d\n", $id);
-    if (array_key_exists($id, $bd['empleado'])) {
+    if (isset($bd['empleado'])) {
+        if (array_key_exists($id, $bd['empleado'])) {
 
-        echo "->id:$id nombre:{$bd['empleado'][$id]['nombre']} apellido:{$bd['empleado'][$id]['apellido']} departamento: ({$bd['empleado'][$id]['idDpto']})";
+            echo "->id:$id nombre:{$bd['empleado'][$id]['nombre']} apellido:{$bd['empleado'][$id]['apellido']} departamento: ({$bd['empleado'][$id]['idDpto']})";
+        } else {
+            echo "EL ID NO EXISTE";
+        }
     } else {
-        echo "EL ID NO EXISTE";
+        echo PHP_EOL;
+        echo "NO HAY EMPLEADOS REGISTRADOS";
+        echo PHP_EOL;
     }
 
     siguiente();
