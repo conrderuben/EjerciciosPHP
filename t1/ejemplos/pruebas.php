@@ -17,4 +17,9 @@ function doble($x)
 echo doble($x);
 echo "\n";
 echo $x;
+
+$bd=[];
+$bd['ruben'][0]=1;
+print_r($bd);
+
 ?>
