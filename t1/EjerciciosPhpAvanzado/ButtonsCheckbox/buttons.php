@@ -1,13 +1,14 @@
 <?php
-$n=$_GET['numero'];
+$n=isset($_GET['numero']) ? $_GET['numero']: 3;
 echo  <<<HTML
 <form action="checkbox.php">
 
 HTML;
-for($i=0;$i<$n;$i++){
+for($i=1;$i<=$n;$i++){
 
   echo  <<<HTML
-<input type="checkbox" name="boton" value="$i">
+<input type="radio" name="resultado" value="$i">
+$i
         
 HTML;
 }
