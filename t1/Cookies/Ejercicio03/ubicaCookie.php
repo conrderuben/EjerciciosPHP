@@ -2,7 +2,7 @@
 $nombre=isset($_GET['Nombre'])?$_GET['Nombre']:null;
 $contenido=isset($_GET['Contenido'])?$_GET['Contenido']:null;
 $nivel=isset($_GET['Nivel'])? $_GET['Nivel']: null;
-$rutaBase="/EjerciciosPHP/t1/Cookies/Ejercicio3";
+$rutaBase=	$rutaBase = pathinfo($_SERVER['REQUEST_URI'])['dirname'];
 $ruta="";
 if($nombre!=null || $contenido!=null || $nivel!=null){
     if($nivel==0){

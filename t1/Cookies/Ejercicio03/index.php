@@ -1,8 +1,8 @@
 <h2>Listado de cookies por nivel</h2>
 
 Nivel0---><a href="visualizarcookies.php">Listado de cookies</a><br>
-Nivel0--->Nivel1--><a href="visualizarcookies.php">Listado de cookies</a><br>
-Nivel0--->Nivel1-->Nivel2<a href="visualizarcookies.php">Listado de cookies</a><br>
+Nivel0--->Nivel1--><a href="uno/visualizarcookies.php">Listado de cookies</a><br>
+Nivel0--->Nivel1-->Nivel2<a href="uno/dos/visualizarcookies.php">Listado de cookies</a><br>
 
 
 <h2>Creación de cookies en diferentes niveles (directorios) por
