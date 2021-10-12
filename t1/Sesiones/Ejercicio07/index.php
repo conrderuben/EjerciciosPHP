@@ -5,7 +5,7 @@ various forms to a screen that shows the summary of the information entered so f
 
 <?php
 session_start();
-    
+   
 $nombre=isset($_SESSION['nombre'])?$_SESSION['nombre']:'';
 $apellido=isset($_SESSION['apellido'])?$_SESSION['apellido']:'';
 $fecha=isset($_SESSION['fecha'])?$_SESSION['fecha']:'';
@@ -13,6 +13,7 @@ $genero=isset($_SESSION['genero'])?$_SESSION['genero']:'m';
 $casado=isset($_SESSION['pareja'])?$_SESSION['pareja']:'';
 $hijos= isset($_SESSION['hijos'])?true:false;
 $nacionalidades = isset($_SESSION['nacionalidades'])?$_SESSION['nacionalidades']:"Española";
+
 
 
 echo "
@@ -42,7 +43,7 @@ Otro<input type='radio' name='genero' value='o' checked='checked'><br>";
 }
 
 if($casado=="pareja"){
-    echo "Casado o Pareja de hecho<input type='checkbox' name='pareja' value='pareja' cheked='checked'>";
+    echo "Casado o Pareja de hecho<input type='checkbox' name='pareja' value='pareja' checked='checked'>";
 }else{
     echo "Casado o Pareja de hecho<input type='checkbox' name='pareja' value='pareja'>";  
 }
