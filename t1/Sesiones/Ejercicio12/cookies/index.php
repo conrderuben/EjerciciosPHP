@@ -1,7 +1,8 @@
 <?php 
 setcookie('ns');
-setcookie('n');
 setcookie('numeros');
+
+
 ?>
 
 
