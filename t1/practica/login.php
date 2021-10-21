@@ -1,12 +1,20 @@
 <?php session_start();
+if (isset($_SESSION['bd']['usuarios']['papa']['mensajes'])){
+    print_r($_SESSION['bd']['usuarios']['papa']['mensajes']);
+}
+
 if(isset($_GET['nUsuario'])){
-    $_SESSION['usuarios'][]=[$_GET['nUsuario']=>['pwd'=>$_GET['nContraseña']]];
+    $_SESSION['usuarios'][$_GET['nUsuario']]=['pwd'=>$_GET['nContraseña'], 'mensajes' => []];
+    echo "Hola";
 
 }
+
 $usuarios=isset($_SESSION['usuarios'])?$_SESSION['usuarios']:[];
 $_SESSION['bd']=['_activo'=>"", '_recordar'=>false, 'usuarios'=>$usuarios];
-
-
+print_r($_SESSION['bd']);
+if (isset($_SESSION['bd']['usuarios']['papa']['mensajes'])){
+    print_r($_SESSION['bd']['usuarios']['papa']['mensajes']);
+}
 ?>
 <h1>LOGIN</h1><br>
 <form action="listaUsuarios.php">
