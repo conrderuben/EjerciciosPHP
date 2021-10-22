@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 echo "<h1>ESCRIBIR</h1>";
 echo "

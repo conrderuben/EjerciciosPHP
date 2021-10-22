@@ -1,39 +1,40 @@
-<?php session_start();
-if (isset($_SESSION['bd']['usuarios']['papa']['mensajes'])){
-    print_r($_SESSION['bd']['usuarios']['papa']['mensajes']);
+<?php
+session_start();
+if (isset($_GET['nUsuario']) && (! array_key_exists($_GET['nUsuario'], $_SESSION['bd']['usuarios']))) {
+    $_SESSION['bd']['usuarios'][$_GET['nUsuario']] = [
+        'pwd' => $_GET['nContraseña'],
+        'mensajes' => []
+    ];
 }
 
-if(isset($_GET['nUsuario'])){
-    $_SESSION['usuarios'][$_GET['nUsuario']]=['pwd'=>$_GET['nContraseña'], 'mensajes' => []];
-    echo "Hola";
+$usuarios = isset($_SESSION['bd']['usuarios']) ? $_SESSION['bd']['usuarios'] : [];
+$recordar = isset($_SESSION['bd']['_recordar']) ? $_SESSION['bd']['_recordar'] : false;
+$activo = isset($_SESSION['bd']['_activo']) ? $_SESSION['bd']['_activo'] : "";
+$_SESSION['bd'] = [
+    '_activo' => $activo,
+    '_recordar' => $recordar,
+    'usuarios' => $usuarios
+];
 
-}
-
-$usuarios=isset($_SESSION['usuarios'])?$_SESSION['usuarios']:[];
-$_SESSION['bd']=['_activo'=>"", '_recordar'=>false, 'usuarios'=>$usuarios];
-print_r($_SESSION['bd']);
-if (isset($_SESSION['bd']['usuarios']['papa']['mensajes'])){
-    print_r($_SESSION['bd']['usuarios']['papa']['mensajes']);
-}
 ?>
-<h1>LOGIN</h1><br>
+<h1>LOGIN</h1>
+<br>
 <form action="listaUsuarios.php">
-<?php 
-$recordar=isset($_SESSION['bd']['_recordar'])?$_SESSION['bd']['_recordar']:null;
-if($recordar!=true){
+<?php
+if ($recordar) {
     echo "Usuario <input type='text' name='usuario' value='{$_SESSION['bd']['_activo']}'><br>";
-}else{
+} else {
     echo "Usuario <input type='text' name='usuario'><br>";
 }
 ?>
 Contraseña <input type="password" name="contraseña"><br>
 
-<?php 
-    if($_SESSION['bd']['_recordar']==true){
-        echo "Recordar <input type='checkbox' name='recordar' cheked='cheked'><br>";
-    }else{
-        echo "Recordar <input type='checkbox' name='recordar'><br>";
-    }
+<?php
+if ($_SESSION['bd']['_recordar']) {
+    echo "Recordar <input type='checkbox' name='recordar' value='true' checked='checked'><br>";
+} else {
+    echo "Recordar <input type='checkbox' name='recordar' value='true'><br>";
+}
 
 ?>
 <input type="submit" value="Enviar"><br>
