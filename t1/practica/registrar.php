@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 ?>
 <h1>NUEVO USUSARIO</h1>

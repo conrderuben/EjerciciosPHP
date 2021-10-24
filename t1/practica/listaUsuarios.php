@@ -5,20 +5,20 @@ $contraseña = isset($_GET['contraseña']) ? $_GET['contraseña'] : "";
 if (isset($_GET['usuario']) && ! array_key_exists($usuario, $_SESSION['bd']['usuarios'])) {
     echo "Usuario no encontrado";
 } else {
-$valido=true;    
+    $valido = true;
 
-    
-    if ($contraseña != $_SESSION['bd']['usuarios'][$usuario]['pwd']) {
-        $valido=false;
+    if (isset($_GET['usuario'])) {
+        if ($contraseña != $_SESSION['bd']['usuarios'][$usuario]['pwd']) {
+            $valido = false;
+        }
     }
-    
-    if ($valido){
-    
+
+    if ($valido) {
 
         if (isset($_GET['textarea'])) {
             $_SESSION['bd']['usuarios'][$_GET['para']]['mensajes'][] = [
                 'remitente' => $_GET['de'],
-                'fecha' => date("d") . date("M") . date("Y"),
+                'fecha' => date("d") ."-". date("M") ."-". date("Y") . "(" .date("G") . ":" . date("i") . ")",
                 'texto' => $_GET['textarea']
             ];
         }
