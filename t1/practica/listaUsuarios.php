@@ -4,6 +4,7 @@ $usuario = isset($_GET['usuario']) ? $_GET['usuario'] : "";
 $contraseña = isset($_GET['contraseña']) ? $_GET['contraseña'] : "";
 if (isset($_GET['usuario']) && ! array_key_exists($usuario, $_SESSION['bd']['usuarios'])) {
     echo "Usuario no encontrado";
+    header("refresh:3; url=login.php");
 } else {
     $valido = true;
 

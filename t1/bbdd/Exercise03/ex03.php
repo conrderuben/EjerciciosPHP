@@ -11,6 +11,7 @@ if (isset($_GET['nombre']) && isset($_GET['precio'])){
     insert into PRODUCTO(nombre,precio)
     values (:nombre,:precio)
 SQL;
+    $resultado = $bd->prepare ( $consulta );
     foreach ($_SESSION['preparados'] as $producto ) {
         $nombre = $producto [0];
         $precio = $producto [1];
@@ -22,8 +23,8 @@ SQL;
             echo "<h4>ERROR al INSERTAR</h4> <p>$e</p>";
         }
 }
+session_unset();
 }else{
-    echo "problema";
 }
 ?>
 <h1>Formulario</h1>
