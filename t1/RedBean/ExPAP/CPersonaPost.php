@@ -11,9 +11,11 @@ function desconectar()
 }
 function insertar($persona, $pais)
 {
+    
     $p = R::dispense('persona');
     $p->nombre = $persona;
-    $p->pais=$pais;
+    $pa=R::load('pais', $pais);
+    $p->pais=$pa;
     R::store($p);
 }
 

@@ -17,7 +17,7 @@ Pais:
 	{
 	    $paises = R::findAll('pais');
 	    foreach ($paises as $pais) {
-	    echo "<option>{$pais->nombre}</option>";
+	    echo "<option value='{$pais->id}'>{$pais->nombre}</option>";
 	    }
 	}
 	conectar();
