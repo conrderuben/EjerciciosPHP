@@ -17,7 +17,8 @@ desconectar();
 <table border="1">
 	<tr> 
 		<th>Nombre </th>	
-		<th>Ciudadanos </th>	
+		<th>Nacidos </th>	
+		<th>Residentes</th>	
 	</tr>
 
 	<?php foreach ($paises as $pais):?>
@@ -26,7 +27,12 @@ desconectar();
 				<?=$pais->nombre?>
 			</td>
 			<td> 
-				<?php foreach ($pais->ownPersonaList as $persona):?>
+				<?php foreach ($pais->alias('nace')->ownPersona as $persona):?>
+					<?=$persona->nombre?> 
+				<?php endforeach;?>
+			</td>
+			<td> 
+				<?php foreach ($pais->alias('vive')->ownPersona as $persona):?>
 					<?=$persona->nombre?> 
 				<?php endforeach;?>
 			</td>

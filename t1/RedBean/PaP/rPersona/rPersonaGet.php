@@ -17,7 +17,9 @@ desconectar();
 	<tr> 
 		<th>Nombre </th>	
 		<th>País de nacimiento</th>	
-		<th>Aficiones</th>	
+		<th>País de residencia</th>	
+		<th>Aficiones que gustan</th>
+		<th>Aficiones que no gustan</th>	
 	</tr>
 
 	<?php foreach ($personas as $persona):?>
@@ -25,14 +27,26 @@ desconectar();
 			<td>
 				<?=$persona->nombre?>
 			</td>
+			
 			<td> 
-				<?=$persona->pais->nombre?>
+				<?=$persona->fetchAs('pais')->nace->nombre?>
 			</td>
+
+			<td> 
+				<?=$persona->fetchAs('pais')->vive->nombre?>
+			</td>
+			
 			<td>
-				<?php foreach ($persona->sharedAficionList as $aficion):?>
-					<?=$aficion->nombre?> 
+				<?php foreach ($persona->sharedGustaList as $gusta):?>
+					<?=$gusta->persona->nombre?> 
 				<?php endforeach;?>
 			</td>
+			<td>
+				<?php foreach ($persona->sharedOdioList as $odio):?>
+					<?=$odio->persona->nombre?> 
+				<?php endforeach;?>
+			</td>
+			
 		</tr>
 	
 	<?php endforeach;?>
