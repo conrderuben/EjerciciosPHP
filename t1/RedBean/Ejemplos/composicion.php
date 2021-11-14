@@ -10,6 +10,8 @@ function desconectar()
     R::close();
 }
 
+conectar();
+
 //RELACIONES MUCHOS A UNO
 $c=R::dispense('colegio');
 $c->nombre='IES Rey Fernando VI';
@@ -30,3 +32,6 @@ $c=R::dispense('colegio');
 $c->nombre='IES Rey Fernando VI';
 $c->ownAlumnoList[]=$a;//Consiste en añadir el alumno $a a la coleccion de alunmos del colegio
 R::store($c);
+foreach ($c->ownAlumnoList as $a){
+    echo $a;
+}

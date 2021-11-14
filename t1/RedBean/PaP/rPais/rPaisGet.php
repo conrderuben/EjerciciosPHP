@@ -27,12 +27,12 @@ desconectar();
 				<?=$pais->nombre?>
 			</td>
 			<td> 
-				<?php foreach ($pais->alias('nace')->ownPersona as $persona):?>
+				<?php foreach ($pais->alias('nace')->ownPersonaList as $persona):?>
 					<?=$persona->nombre?> 
 				<?php endforeach;?>
 			</td>
 			<td> 
-				<?php foreach ($pais->alias('vive')->ownPersona as $persona):?>
+				<?php foreach ($pais->alias('vive')->ownPersonaList as $persona):?>
 					<?=$persona->nombre?> 
 				<?php endforeach;?>
 			</td>
