@@ -12,7 +12,9 @@ $persona=R::dispense('persona');
 $persona->nombre = $nombre;
 //$pNace = R::load('pais',$idPaisN);
 //$pNace->alias('nace')->xownPersonaList [] = $persona;
-$persona->nace = R::load('pais',$idPaisN);
+if ($idPaisN != 'ninguno') {
+    $persona->nace = R::load('pais',$idPaisN);
+}
 $persona->vive = R::load('pais',$idPaisV);
 //$persona->pais = R::findOne('pais','nombre=?',[$nombrePais]);
 foreach ($idAficionesGusta as $idAficionGusta) {

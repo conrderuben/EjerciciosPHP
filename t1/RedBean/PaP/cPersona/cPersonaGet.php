@@ -17,13 +17,11 @@ $aficiones = R::findAll('aficion');
 	
 	País nacimiento
 	<select name="idPaisN">
-	<!--  <select name="nombrePais"> -->
+		<option value="ninguno"> --Ninguno-- </option>
 		<?php foreach ($paises as $pais):?>
 		
 		<option value="<?= $pais->id?>">
-		<!--  <option value="<?= $pais->nombre?>"> -->
 			<?= $pais->nombre?>
-			
 		</option>
 		
 		<?php endforeach;?>
