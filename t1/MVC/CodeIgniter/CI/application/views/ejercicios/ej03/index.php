@@ -1,13 +1,15 @@
-<h1>Lista de links</h1>
+<?=titulo('Lista de links')?>
+
 
 <ul>
-<?php foreach ($links as $etiqueta => $url):?>
+<?php foreach ($pepe as $etiqueta => $url):?>
 	<li>
-		<a href="<?=$url?>"><?=$etiqueta?></a>
+		<?=anchor($url,$etiqueta)?>
 	</li>
 
 <?php endforeach;?>
 </ul>
+
 <form action="<?=base_url()?>">
 	<input type="submit" value="Volver a home"/>
 </form>
