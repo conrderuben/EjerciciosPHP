@@ -20,7 +20,7 @@
           PAP
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Pais</a>
+          <a class="dropdown-item" href="<?php base_url()?>pais/r">Pais</a>
           <a class="dropdown-item" href="#">Persona</a>
           <a class="dropdown-item" href="#">Aficion</a>
         </div>
