@@ -5,9 +5,9 @@
 		<input type="submit" value="Nueva aficion" class="btn btn-secondary"/>
 	</form>
 	
-	<table class='table mt-3 table-dark bg-dark'>
+	<table class='table mt-3 table-striped'>
 		<tr>
-			<th>Nombre</th>
+			<th class=' table-dark bg-dark'>Nombre</th>
 		</tr>
 		
 		<?php foreach ($aficiones as $aficion):?>

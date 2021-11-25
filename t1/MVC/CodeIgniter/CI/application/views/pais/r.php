@@ -5,9 +5,9 @@
 		<input type="submit" value="Nuevo país" class="btn btn-secondary"/>
 	</form>
 	
-	<table class='table mt-3 table-dark bg-dark'>
+	<table class='table mt-3 table-striped'>
 		<tr>
-			<th>Nombre</th>
+			<th class='table-dark text-light'>Nombre</th>
 		</tr>
 		
 		<?php foreach ($paises as $pais):?>
