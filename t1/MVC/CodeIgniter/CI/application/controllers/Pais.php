@@ -13,8 +13,8 @@ class Pais extends CI_Controller {
         $this->load->model('Pais_model');
         try {
             $this->load->model('Pais_model');
-            $datos['paises'] = $this->Pais_model->getAll();
             $this->Pais_model->c($nombre);
+            $datos['paises'] = $this->Pais_model->getAll();
             $datos['mensaje'] = 'Pais insertado correctamente';
             $datos['color'] = 'success';
              frame($this,'pais/r', $datos);

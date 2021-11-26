@@ -12,8 +12,8 @@ class Aficion extends CI_Controller {
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:'ninguno';
         try {
             $this->load->model('Aficion_model');
-            $datos['aficiones'] = $this->Aficion_model->getAll();
             $this->Aficion_model->c($nombre);
+            $datos['aficiones'] = $this->Aficion_model->getAll();
             $datos['mensaje'] = 'Aficion insertada correctamente';
             $datos['color'] = 'success';
             frame($this,'aficion/r', $datos);
