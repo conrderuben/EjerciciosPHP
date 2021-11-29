@@ -21,7 +21,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?=base_url()?>pais/r">Pais</a>
-          <a class="dropdown-item" href="">Persona</a>
+          <a class="dropdown-item" href="<?=base_url()?>persona/r">Persona</a>
           <a class="dropdown-item" href="<?=base_url()?>aficion/r">Aficion</a>
         </div>
       </li>
