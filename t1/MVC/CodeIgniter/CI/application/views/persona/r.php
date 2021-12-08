@@ -29,7 +29,14 @@
 				<?=($persona->nace_id) != null ? $persona->fetchAs('pais')->nace->nombre : '' ?>
 			</td>
 			<td>
-				
+				<?php foreach ($persona->ownGustoList as $gusto):?>
+					<?= $gusto->aficion_id!=NULL ? $gusto->aficion->nombre : '';?>
+				<?php endforeach;?>
+			</td>
+			<td>
+				<?php foreach ($persona->ownOdioList as $odio):?>
+					<?= $odio->aficion_id!=NULL ? $odio->aficion->nombre : '';?>
+				<?php endforeach;?>
 			</td>
 			<td>
 				

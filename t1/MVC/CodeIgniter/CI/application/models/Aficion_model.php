@@ -5,7 +5,7 @@ class Aficion_model extends CI_Model {
         $aficion = R::findOne('aficion','nombre=?',[$nombre]);
         
         if ($aficion==null) {
-            $aficion=R::dispense('pais');
+            $aficion=R::dispense('aficion');
             $aficion->nombre = $nombre;
             R::store($aficion);
         }

@@ -18,12 +18,13 @@ class Persona extends CI_Controller {
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:'ninguno';
         $paisN = isset($_POST['paisN'])?$_POST['paisN']:'ninguno';
         $paisV = isset($_POST['paisV'])?$_POST['paisV']:'ninguno';
-        
-        $this->load->model('Persona_model');
+        $idsAficionGusta = isset($_POST['idAficionGusta']) ? $_POST['idAficionGusta'] : [];
+        $idsAficionOdia = isset($_POST['idAficionOdia']) ? $_POST['idAficionOdia'] : [];
+        echo $paisN;
         try {
             $this->load->model('Persona_model');
+            $this->Persona_model->c($nombre,$paisN, $paisV, $idsAficionGusta, $idsAficionOdia);
             $datos['personas'] = $this->Persona_model->getAll();
-            $this->Persona_model->c($nombre,$paisN, $paisV);
             $datos['mensaje'] = 'Persona insertada correctamente';
             $datos['color'] = 'success';
             frame($this,'persona/r', $datos);
