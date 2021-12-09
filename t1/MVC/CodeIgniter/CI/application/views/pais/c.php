@@ -1,4 +1,4 @@
-<div>
+<div class='ml-3'>
 	<form action="<?=base_url()?>pais/cPost" method="post">
 		<h1>Nuevo país</h1>
 		<label for="id-nombre">Nombre</label>

@@ -16,13 +16,13 @@
 		<label for="id-paisV">Pais de residencia</label>
 		<select name="paisV" id="id-paisV">
 			<?php foreach ($paises as $pais):?>
-			<?php $v = $pais->id?>
+			
 			<option value="<?=$pais->id ?>">
 				<?=$pais->nombre?>
 			</option>
 			<?php endforeach;?>
 		</select>
-		<?= $v?>
+
 		<h3>Aficiones que le gustan</h3>
 			<?php foreach ($aficiones as $aficion): ?>
     			<input id ="idg-<?=$aficion->id?>" type="checkbox" value="<?=$aficion->id?>" name="idAficionGusta[]"/>
@@ -38,7 +38,7 @@
     		<br>
 		
 		
-		<input type="submit" value='enviar'/>
+		<input class="btn btn-secondary" type="submit" value='enviar'/>
 		
 	</form>
 </div>
