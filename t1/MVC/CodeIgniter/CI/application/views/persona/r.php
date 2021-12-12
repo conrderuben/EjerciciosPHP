@@ -26,7 +26,7 @@
 				<?=($persona->nace_id) != null ? $persona->fetchAs('pais')->nace->nombre : '' ?>
 			</td>
 			<td>
-				<?=($persona->nace_id) != null ? $persona->fetchAs('pais')->nace->nombre : '' ?>
+				<?=($persona->nace_id) != null ? $persona->fetchAs('pais')->vive->nombre : '' ?>
 			</td>
 			<td>
 				<?php foreach ($persona->ownGustoList as $gusto):?>
@@ -39,7 +39,19 @@
 				<?php endforeach;?>
 			</td>
 			<td>
+				<form id="idFormU" action="<?=base_url().'persona/u'?>" >
+					<input type="hidden" name="idPersona" value="<?= $persona->id?>" />
+					<button onclick="document.getElementById('idFormU').submit()"> 
+						<img height=15 width="15" src="<?=base_url().'assets/img/lapiz.png'?>">
+					</button>
+				</form>
 				
+				<form id="idFormD" action="<?=base_url().'persona/d'?>" method="get">
+					<input type="hidden" name="idPersona" value="<?=$persona->id?>" />
+					<button onclick="document.getElementById('idFormD').submit()"> 
+						<img height=15 width="15" src="<?=base_url().'assets/img/basura.png'?>">
+					</button>
+				</form>
 			</td>
 		</tr>
 		<?php endforeach;?>
